@@ -24,7 +24,7 @@ mv ./kind /usr/local/bin/kind
 pipenv run python -m main
 ```
 
-### Checking results in browser at ``localhost:30080``:
+### Running evaluation from browser at GET ``localhost:30080``:
 ```shell
 pipenv run uvicorn main:app --host 0.0.0.0 --port 30080
 ```
