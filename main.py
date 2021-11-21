@@ -1,16 +1,33 @@
-# This is a sample Python script.
+import json
+import os
 
-# Press Maj+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from json2html import *
+from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
+
+from src.controller.get_pods import get_pods
+from src.install_pre_req import install_pre_req
+
+# install_pre_req()
+
+os.system('kubectl apply -f ./k8s-pods-config/conform-pod.yaml >> logs.txt')
+os.system('kubectl apply -f ./k8s-pods-config/wrong-pod.yaml >> logs.txt')
+
+app = FastAPI()
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+@app.get("/")
+def root():
+    [print(x) for x in get_pods()]
+    return HTMLResponse(
+        content=json2html.convert(
+            json=json.dumps(get_pods())
+        )
+    )
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    [print(x) for x in get_pods()]
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# pipenv run python -m main
+# pipenv run uvicorn main:app --reload --host 0.0.0.0 --port 30080

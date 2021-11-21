@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: conform
+  labels:
+    team: goodteam
+spec:
+  containers:
+    - name: conform
+      image: bitnami/mongodb
