@@ -12,7 +12,7 @@ Please note this operation might take up to 10 minutes.
 
 ### Vagrantfile
 - Create a Centos:7 Virtual Machine
-- Install Python 3.9, Docker, Kind
+- Install Python 3.9, Docker, Kind and Kubectl
 - Runs main.py
 - Start server on port 80.
 
