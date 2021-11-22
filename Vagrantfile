@@ -1,7 +1,7 @@
 ENV['VAGRANT_DEFAULT_PROVIDER'] = 'virtualbox'
 
 $INSTALL_SCRIPT = <<-EOF
-mv /tmp/test $HOME/test
+mv /tmp/test $HOME
 
 cd /tmp
 #### Prereq
@@ -10,8 +10,15 @@ yum install -y epel-release
 yum install -y yum-utils
 
 #### Install python 3.9 & python-pip
-yum install -y python3
-python3 -m pip install -upgrade pip
+yum groupinstall "Development Tools" -y
+yum install openssl-devel libffi-devel bzip2-devel -y
+yum install wget -y
+wget https://www.python.org/ftp/python/3.9.7/Python-3.9.7.tgz
+tar xvf Python-3.9.7.tgz
+cd Python-3.9*/
+./configure --enable-optimizations
+make altinstall
+python3.9 -m pip install --upgrade pip
 
 #### Docker install:
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
@@ -32,12 +39,12 @@ mv ./kubectl /usr/local/bin/kubectl
 
 #### Install pipenv & run main.py:
 cd $HOME/test
-python3 -m pip install pipenv
-python3 -m pipenv install
-python3 -m pipenv run python main.py
+python3.9 -m pip install pipenv
+python3.9 -m pipenv install
+python3.9 -m pipenv run python main.py
 
 #### Run the webservice on port 80
-python3 -m pipenv run uvicorn main:app --host 0.0.0.0 --port 80
+python3.9 -m pipenv run uvicorn main:app --host 0.0.0.0 --port 80
 EOF
 
 Vagrant.configure("2") do |config|
@@ -52,7 +59,6 @@ Vagrant.configure("2") do |config|
   #config.vm.box = "ubuntu/trusty64"
   config.vm.post_up_message = "VM test Ok"
 
-  config.vm.provision "shell", inline: "mkdir $HOME/test"
   config.vm.provision "file", source:".", destination: "/tmp/test"
   config.vm.provision "shell", inline: $INSTALL_SCRIPT
   end

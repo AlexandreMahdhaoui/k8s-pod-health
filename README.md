@@ -1,11 +1,16 @@
 # Kubernetes Pod Evaluation Service
 
 # Reproducible test environment
-- Please ensure ``Vagrant`` and ``VirtualBox`` is installed.
+- Please ensure ``Vagrant`` and ``VirtualBox`` is installed on your machine.
 - Open a terminal, ``cd`` to this directory and run ``vagrant up``
-- You can now checkout the results in your terminal or:
+- You can now checkout the results in your **terminal** or:
   - `HTTP GET 10.10.10.21/`: Results displayed in a table.
   - `HTTP GET 10.10.10.21/json`: Results in json format.
+
+### Vagrantfile
+- Creates a centos7 VM
+- Installs Python, Docker, Kind
+- Runs main.py
 
 # Simple local test
 
