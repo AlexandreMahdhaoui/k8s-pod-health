@@ -5,7 +5,7 @@
   - ``git clone https://github.com/AlexandreMahdhaoui/k8s-pod-health.git``
   - ``cd k8s-pod-health``
   - ``vagrant up``
-    - Please note this operation might take up to 10 minutes.
+Please note this operation might take up to 10 minutes.
 - You can now checkout the results in your **terminal** or:
   - `HTTP GET 10.10.10.21/`: Results displayed in a table.
   - `HTTP GET 10.10.10.21/json`: Results in JSON format.
