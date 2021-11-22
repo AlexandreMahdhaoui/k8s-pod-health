@@ -1,8 +1,11 @@
 # Kubernetes Pod Evaluation Service
 ## Reproducible test environment
 - Please ensure ``Vagrant`` and ``VirtualBox`` is installed on your machine.
-- Open a terminal, ``cd`` to this directory and run ``vagrant up``. 
-Please note this operation can take up to 10 minutes.
+- Open a terminal, ``cd`` to a directory and run:
+  - ``git clone https://github.com/AlexandreMahdhaoui/k8s-pod-health.git``
+  - ``cd k8s-pod-health``
+  - ``vagrant up``
+    - Please note this operation might take up to 10 minutes.
 - You can now checkout the results in your **terminal** or:
   - `HTTP GET 10.10.10.21/`: Results displayed in a table.
   - `HTTP GET 10.10.10.21/json`: Results in JSON format.
