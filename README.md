@@ -1,7 +1,13 @@
 # Kubernetes Pod Evaluation Service
 
+# Reproducible test environment
+- Please ensure ``Vagrant`` and ``VirtualBox`` is installed.
+- Open a terminal, ``cd`` to this directory and run ``vagrant up``
+- You can now checkout the results in your terminal or:
+  - `HTTP GET 10.10.10.21/json`
+  - `HTTP GET 10.10.10.21/json`
 
-# Simple test
+# Simple local test
 
 ### Install, run following commands in your terminal:
 Please ensure ``kubectl`` is installed on your machine.
