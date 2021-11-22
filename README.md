@@ -63,7 +63,7 @@ docker build -t k8s-pod-health . &&\
 Setting up ``dind`` by biding ``docker.sock``in order to create
 the `kind` cluster.
 
-### However I'd need a bit more time to investigate 2 issues:
-- First is connecting to ``localhost:40080`` when using ``--network host`` 
+### However I'd need to investigate 2 issues:
+- Connecting to ``localhost:40080`` when using ``--network host`` 
 which is used because the ``.kube`` created by ``kind`` is referring to a ``localhost``.
 - Experienced issues connecting to `default namespace` with default account when trying to deploy ``conform`` and ``wrong`` pods with ``kubectl``.

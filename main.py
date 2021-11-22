@@ -3,8 +3,7 @@ import os
 
 from json2html import *
 from fastapi import FastAPI
-from fastapi.responses import HTMLResponse
-from fastapi.responses import JSONResponse
+from fastapi.responses import HTMLResponse, JSONResponse
 
 from src.controller.get_pods import get_pods
 from src.install_pre_req import install_pre_req
@@ -28,9 +27,11 @@ def root():
 
 
 @app.get("/json")
-def json():
+def json_():
     [print(x) for x in get_pods()]
-    return JSONResponse(content=json.dumps(get_pods()))
+    return JSONResponse(
+        content=json.dumps(get_pods())
+    )
 
 
 if __name__ == '__main__':
